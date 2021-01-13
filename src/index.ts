@@ -30,6 +30,7 @@ async function login (code: string) {
   }
   
 }
+
 app.use('/', async function (req, res, next) {
   console.log('express responding to', req.path)
   console.log(req.query)
@@ -38,6 +39,14 @@ app.use('/', async function (req, res, next) {
   if (code) { // if code login
     const data = await login(code)
     res.redirect(`/?token=${data.access_token}`)
+
+  } else if (req.query['user']) {
+    const resp = await axios.get('https://api.coinbase.com/v2/user', {
+      headers: {
+        'Authorization': 'Bearer ' + req.query['token']
+      }
+    })
+    res.json(resp.data)
   } else if (req.query['token']) { // if token 
     res.send('logged in')
   } else if (isLogin) { // if no token or login
