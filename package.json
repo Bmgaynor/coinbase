@@ -1,5 +1,5 @@
 {
-  "name": "coinbase",
+  "name": "coinbase-test",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,13 +10,13 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^14.14.20",
-    "passport-coinbase": "^0.1.4",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   },
   "dependencies": {
     "@types/express": "^4.17.11",
     "axios": "^0.21.1",
+    "coinbase": "^2.0.8",
     "express": "^4.17.1"
   }
 }

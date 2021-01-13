@@ -30,6 +30,10 @@ async function login (code: string) {
   }
   
 }
+app.use('/prices', async (req, res) => {
+  const pricesResp = await axios.get('https://api.coinbase.com/v2/prices/spot?currency=USD')
+  return res.json(pricesResp.data)
+})
 
 app.use('/', async function (req, res, next) {
   console.log('express responding to', req.path)
@@ -55,6 +59,8 @@ app.use('/', async function (req, res, next) {
     res.redirect('/?login=true')
   }
 })
+
+
 
 app.listen(3000, () => {
   console.log('listening on port 3000')
